@@ -1,3 +1,22 @@
+
+Claude
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Build apk · YML
 name: Build APK
 on:
   push:
@@ -22,7 +41,7 @@ jobs:
       - run: npx cap sync android
       - name: Ikona a farby
         run: |
-          for d in android/app/src/main/res/mipmap-*; do
+          for d in android/app/src/main/res/mipmap-*dpi; do
             cp icon.png $d/ic_launcher.png
             cp icon.png $d/ic_launcher_round.png
             cp icon-fg.png $d/ic_launcher_foreground.png
@@ -47,3 +66,5 @@ jobs:
           tag_name: v${{ github.run_number }}
           name: Dennik zisku v${{ github.run_number }}
           files: Dennik-zisku.apk
+ 
+Claude finished the response
