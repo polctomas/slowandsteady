@@ -1,0 +1,13 @@
+DENNIK ZISKU - ako dostat appku (APK) do Androidu
+
+1) Vytvor si bezplatny ucet na github.com a klikni New repository (nazov napr. dennik-zisku, Public alebo Private).
+2) V novom repozitari klikni "uploading an existing file" a pretiahni tam VSETKY subory z tohto priecinka (aj priecinok www).
+   Ak sa neprenesie skryty priecinok .github, klikni Add file > Create new file, nazov napis:
+   .github/workflows/build-apk.yml   a vloz obsah suboru build-apk.yml z tohto balika.
+3) Klikni Commit changes. Otvor zalozku Actions - spusti sa zostavenie (trva 4-8 minut).
+4) Ked je hotove (zelena fajka), otvor na hlavnej stranke repozitara vpravo "Releases" - tam je subor Dennik-zisku.apk.
+   Otvor tento odkaz priamo v telefone a stiahni APK.
+5) Na telefone povol instalaciu z neznamych zdrojov (Android sa ta opyta sam), otvor subor a klikni Instalovat.
+
+Aktualizacia: nahraj do repozitara novy www/index.html - vznikne nova verzia APK a nainstaluje sa cez staru, udaje zostanu.
+Zaloha: v appke tlacidlo Zalohovat otvori zdielanie - uloz do Drive/WhatsAppu/Suborov.
