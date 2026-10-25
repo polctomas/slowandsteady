@@ -47,5 +47,3 @@ jobs:
           tag_name: v${{ github.run_number }}
           name: Dennik zisku v${{ github.run_number }}
           files: Dennik-zisku.apk
- 
-Claude finished the response
