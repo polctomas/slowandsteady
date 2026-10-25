@@ -179,6 +179,107 @@ tfoot td{position:sticky;bottom:0;background:rgba(20,22,44,.95);font-weight:800;
 .gbar u{position:absolute;top:0;bottom:0;width:1px;background:rgba(255,255,255,.18)}
 .goal.hit{border-color:rgba(52,229,160,.5)}
 .goal.hit .gbar i{background:linear-gradient(90deg,#34e5a0,#b6ff5d);box-shadow:0 0 18px rgba(52,229,160,.7)}
+
+/* ===== MOBILNÉ ROZLOŽENIE (len vzhľad, bez zmeny funkcií) ===== */
+@media(hover:none){.btn:hover,.tab:hover,.chip:hover,.card:hover,.streak:hover{transform:none}}
+@media(max-width:700px){
+  html{-webkit-tap-highlight-color:transparent}
+  .blob{filter:blur(70px)}
+  .wrap{padding:calc(16px + env(safe-area-inset-top,0px)) 12px calc(40px + env(safe-area-inset-bottom,0px))}
+
+  /* hlavička: názov hore, tri tlačidlá v jednom rade */
+  header{flex-direction:column;align-items:stretch;gap:12px}
+  h1{font-size:1.55rem}
+  header>div{display:grid!important;grid-template-columns:repeat(3,1fr);gap:8px!important}
+  header .btn{padding:10px 4px;font-size:.78rem;line-height:1.25;text-align:center;white-space:normal;min-height:44px}
+
+  /* záložky tabuliek */
+  .tabs{padding:14px 0 6px;margin:0 -12px;padding-left:12px;padding-right:12px;scroll-snap-type:x proximity}
+  .tab{scroll-snap-align:start;padding:8px 14px 8px 11px}
+  .tab .tx{max-width:130px}
+
+  /* panel s nástrojmi: rok, premenovať, šípky; mazanie na vlastnom riadku */
+  .bar{display:grid;grid-template-columns:repeat(12,1fr);gap:8px;margin:8px 0 14px}
+  .bar .sp{display:none}
+  .bar .btn{min-height:46px;padding:9px 6px;text-align:center}
+  .bar #year{grid-column:span 3}
+  .bar #ren{grid-column:span 5}
+  .bar #mvl,.bar #mvr{grid-column:span 2}
+  select.btn{font-size:1rem;padding-right:4px}
+  .bar #clr,.bar #del{grid-column:span 6;font-size:.82rem;line-height:1.2}
+
+  /* hlavná karta */
+  .hero{padding:18px 14px 14px;border-radius:20px}
+  .hero-top{gap:16px;flex-direction:column;align-items:stretch}
+  .huge{font-size:clamp(2.3rem,12.5vw,3.3rem);margin:2px 0 8px}
+  .chips{min-width:0;max-width:none;width:100%;grid-template-columns:1fr 1fr;gap:8px}
+  .chip{padding:10px 12px;min-width:0}
+  .chip b{font-size:.98rem;display:block;overflow-wrap:anywhere}
+  .goal{padding:12px 14px;margin-top:16px}
+  .goal-top{flex-direction:column;gap:6px;font-size:.9rem}
+  .gedit{padding:7px 12px;font-size:.8rem;margin-left:6px}
+  .streak{padding:12px 14px;gap:10px 12px;margin-top:16px}
+  .flame{font-size:1.9rem}
+  .dots{width:100%;margin-left:0;justify-content:space-between;gap:0}
+  .dot7{flex:1;width:auto}
+
+  /* prepínač grafu na celú šírku */
+  .seg{display:flex;width:100%;margin:18px 0 6px}
+  .seg button{flex:1;padding:10px 6px;font-size:.88rem}
+
+  /* graf: väčšie popisky, aby boli čitateľné */
+  .ax{font-size:19px}.ml{font-size:19px}.vl{font-size:18px}.mlab{font-size:18px}
+  .tip{font-size:.78rem;padding:8px 10px}
+
+  /* mesiace: väčšie klepacie plochy */
+  .months{margin:16px -12px 10px;padding:2px 12px;gap:4px;scroll-snap-type:x proximity}
+  .m{scroll-snap-align:center;padding:11px 15px;font-size:.95rem}
+
+  /* tabuľka -> zoznam kariet po dňoch */
+  .tw{max-height:78vh;max-height:78dvh;border-radius:20px;overscroll-behavior:contain}
+  table,thead,tbody,tfoot{display:block;min-width:0;width:100%}
+  thead{display:none}
+  tbody tr{display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"d p" "i o" "c c";gap:8px 10px;padding:12px 14px;border-top:1px solid var(--line)}
+  tbody tr:first-child{border-top:0}
+  tbody tr.today{background:rgba(123,108,255,.16)}
+  tbody tr.today td{background:none}
+  tbody tr:hover td{background:none}
+  td{display:block;padding:0;border:0;text-align:left;min-width:0}
+  td:first-child{grid-area:d;display:flex;align-items:baseline;gap:6px;align-self:center;font-size:.95rem}
+  td:first-child b{width:auto;font-size:1.15rem}
+  td:nth-child(2){grid-area:i}
+  td:nth-child(3){grid-area:o}
+  td.p{grid-area:p;text-align:right;align-self:center;font-size:1.05rem}
+  td.c{grid-area:c;display:flex;justify-content:space-between;align-items:baseline;font-size:.88rem;font-weight:700;padding-top:2px}
+  td.p:empty,td.c:empty{display:none}
+  td.c::before{content:"Spolu od začiatku roka";color:var(--mute);font-weight:600;font-size:.78rem}
+  td:nth-child(2)::before,td:nth-child(3)::before{display:block;color:var(--mute);font-size:.74rem;font-weight:600;margin:0 0 4px 2px}
+  td:nth-child(2)::before{content:"Vložil (€)"}
+  td:nth-child(3)::before{content:"Vybral (€)"}
+  td input{display:block;max-width:none;width:100%;min-height:48px;font-size:1.1rem;font-weight:600;padding:10px 12px;background:rgba(0,0,0,.28);border:1px solid var(--line);border-radius:12px}
+
+  /* súčet mesiaca prilepený dole v tabuľke */
+  tfoot{position:sticky;bottom:0;z-index:3;background:#14162c;border-top:1px solid var(--a1)}
+  tfoot tr{display:grid;grid-template-columns:repeat(3,1fr);grid-template-areas:"t t t" "a b c";gap:2px 8px;padding:10px 14px}
+  tfoot td{position:static;background:none;border:0;padding:0;font-size:.95rem;min-width:0;overflow-wrap:anywhere}
+  tfoot td:first-child{grid-area:t;display:block;font-size:.78rem;color:var(--mute);font-weight:700}
+  tfoot td:nth-child(2){grid-area:a}
+  tfoot td:nth-child(3){grid-area:b}
+  tfoot td:nth-child(4){grid-area:c}
+  tfoot td:nth-child(5){display:none}
+  tfoot td:nth-child(2)::before,tfoot td:nth-child(3)::before,tfoot td:nth-child(4)::before{display:block;color:var(--mute);font-size:.7rem;font-weight:600;margin:0 0 1px}
+  tfoot td:nth-child(2)::before{content:"Vložil"}
+  tfoot td:nth-child(3)::before{content:"Vybral"}
+  tfoot td:nth-child(4)::before{content:"Zisk"}
+  tfoot td:nth-child(4){text-align:right}
+
+  .hint{font-size:.78rem;margin-top:12px}
+  .toast{bottom:calc(18px + env(safe-area-inset-bottom,0px));max-width:90vw;text-align:center}
+}
+@media(max-width:360px){
+  header .btn{font-size:.72rem}
+  .m{padding:10px 12px}
+}
 </style>
 </head>
 <body>
